@@ -10,10 +10,26 @@ var Item2 = () => (
 class GroceryListItem extends React.Component {
   constructor(props){
     super(props);
+
+    this.state = {
+      bold: false
+    };
   }
+
+  onItemHover () {
+    this.setState ({
+      bold: !this.state.bold
+    });
+  }
+
   render (){
+
+    var style = {
+      fontWeight: this.state.bold ? 'bold' : 'normal'
+    };
+
     return (
-      <li>{this.props.item}</li>
+      <li style={style} onMouseOver={this.onItemHover.bind(this)} onMouseLeave={this.onItemHover.bind(this)}>{this.props.item}</li>
     );
   }
 }
